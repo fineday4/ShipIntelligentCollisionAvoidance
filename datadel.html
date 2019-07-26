@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>船舶智能避碰监测平台</title>
+        <link rel = "stylesheet" type = "text/css" href="CSS/demo01.css" />
+    </head>
+    <body>
+            <ul>
+                <li>
+                    <a href="home.html" class="active">船舶智能监测分析</a>
+                </li>
+                <li>
+                    <a href="#" id="visite">船舶数据统计</a>
+                </li>
+                <!-- <li>
+                    <a href="prodata.html">提交有问题的数据</a>
+                </li> -->
+                <li>
+                    <a href="chat.html">与研究平台交流</a>
+                </li>  					
+                <li class="li">
+                    <a href="intro.html">上海黄浦江水域海事局监测站</a>
+                </li>
+            </ul>
+        <div id="top-mid">
+        <div id="block_left_01">
+            <ul id="row_ul_navi">
+                <li id="row_li_navi">
+                    <a>统计一啊手动阀</a>
+                </li>
+                <li id="row_li_navi">
+                    <a>统计二啊手动阀</a>
+                </li>
+                <li id="row_li_navi">
+                    <a>统计三啊手动阀</a>
+                </li>
+                <li id="row_li_navi">
+                    <a>统计一啊手动阀</a>
+                </li>
+                <li id="row_li_navi">
+                    <a>统计二啊手动阀</a>
+                </li>
+                <li id="row_li_navi">
+                    <a>统计三啊手动阀</a>
+                </li>
+            </ul>
+        </div>
+        <div id="block_left_null"></div>
+            <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+            <div id="block_left_02"></div>
+            <!-- ECharts单文件引入 -->
+            <script src="http://echarts.baidu.com/build/dist/echarts.js"></script>
+            <script type="text/javascript">
+                // 路径配置
+                require.config({
+                    paths: {
+                        echarts: 'http://echarts.baidu.com/build/dist'
+                    }
+                });
+                
+                // 使用
+                require(
+                    [
+                        'echarts',
+                        'echarts/chart/bar' // 使用柱状图就加载bar模块，按需加载
+                    ],
+                    function (ec) {
+                        // 基于准备好的dom，初始化echarts图表
+                        var myChart = ec.init(document.getElementById('block_left_02')); 
+                        
+                        var option = {
+                            tooltip: {
+                                show: true
+                            },
+                            legend: {
+                                data:['销量']
+                            },
+                            xAxis : [
+                                {
+                                    type : 'category',
+                                    data : ["衬衫","羊毛衫","雪纺衫","裤子","高跟鞋","袜子","雪纺衫","裤子","高跟鞋"]
+                                }
+                            ],
+                            yAxis : [
+                                {
+                                    type : 'value'
+                                }
+                            ],
+                            series : [
+                                {
+                                    "name":"销量",
+                                    "type":"bar",
+                                    "data":[5, 20, 40, 10, 10, 20, 40, 10, 10]
+                                }
+                            ]
+                        };
+                
+                        // 为echarts对象加载数据 
+                        myChart.setOption(option); 
+                    }
+                );
+            </script>
+        </div>
+        <div class="list_style">
+            智能生成表单——这里会根据用户的操作自动生成一份报告，分析出用户看到的数据的问题所在
+            并给出解决方案。在船舶智能监测分析中选中船舶可以添加到船舶数据统计页面中进行统计。
+            还要留出空间给用户自己写文字。
+        </div>
+        <div id="button_div">
+            <div id="button_div01">
+                <button id="button_style">
+                     提交统计结果
+                </button>
+            </div>
+        </div>
+    </body>
+</html>
